@@ -64,7 +64,3 @@ class WikiDumpCrawler(object):
         exit()
         for link in links:
             self.download_file(link, language)
-
-
-crawler = WikiDumpCrawler()
-crawler.get_language_dumps('es')
