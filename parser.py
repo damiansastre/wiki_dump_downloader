@@ -35,8 +35,8 @@ class WikiParser(object):
         for file in os.listdir(self.language):
             path_to_wiki_dump = os.path.join(self.language, file)
             for title, text, pageid in extract_pages(bz2.BZ2File(path_to_wiki_dump)):
+                print('Importing {}'.format(title))
                 full_url, canonical_url = self.get_extra_info(pageid)
-
                 data = {"title": title,
                         "pageid": pageid,
                         "text": filter_wiki(text),
