@@ -61,6 +61,9 @@ class WikiDumpCrawler(object):
         print('Getting Links')
         links, total_size = self.get_links(req.text)
         print('Starting download of {} files with a total size of {:.2f}MB'.format(str(len(links)), total_size))
-        exit()
         for link in links:
             self.download_file(link, language)
+
+
+crawler = WikiDumpCrawler()
+crawler.get_language_dumps('es')
