@@ -42,8 +42,8 @@ class WikiParser(object):
                         "text": filter_wiki(text),
                         "full_url": full_url,
                         "canonical_url": canonical_url}
-                self.content_df.append(data)
-                self.categories_df.append(self.get_categories(pageid))
+                self.content_df.append(data, ignore_index=True)
+                self.categories_df.append(self.get_categories(pageid), ignore_index=True)
             self.content_df.to_pickle("./content.pkl")
             self.categories_df.to_pickle("./categories.pkl")
             exit()
