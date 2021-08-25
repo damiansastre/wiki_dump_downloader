@@ -32,7 +32,7 @@ class WikiParser(object):
 
     def create_data_frames(self):
         for file in os.listdir(self.language):
-            path_to_wiki_dump = os.path.append(self.language, file)
+            path_to_wiki_dump = os.path.join(self.language, file)
             for title, text, pageid in extract_pages(bz2.BZ2File(path_to_wiki_dump)):
                 data = {"title": title,
                         "pageid": pageid,
