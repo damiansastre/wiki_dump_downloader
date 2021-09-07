@@ -1,0 +1,31 @@
+from setuptools import setup
+
+setup(name='wikidump',
+      version='1.0.1',
+      description='Imports Wikipedia Dumps By Language',
+      url='https://github.com/tagercito/wiki_dump_downloader',
+      author='Damian Sastre',
+      author_email='damian.sastre@gmail.com',
+      license='MIT',
+      python_requires='>=3',
+      packages=['wikidump'],
+      install_requires=['beautifulsoup4===4.9.3',
+                        'certifi==2021.5.30',
+                        'charset-normalizer==2.0.4',
+                        'idna==3.2',
+                        'numpy==1.21.2',
+                        'pandas==1.3.2',
+                        'python-dateutil==2.8.2',
+                        'pytz==2021.1',
+                        'requests==2.26.0',
+                        'six==1.16.0',
+                        'soupsieve==2.2.1',
+                        'tqdm==4.62.2',
+                        'urllib3==1.26.6',
+                        'gensim==3.8.3'
+                        ],
+      entry_points={
+          'console_scripts': ['wikidump=wikidump.command_line:main'],
+      },
+      zip_safe=False,
+      include_package_data=True)

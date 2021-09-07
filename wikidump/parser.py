@@ -1,6 +1,6 @@
-import os
 from gensim.corpora.wikicorpus import extract_pages, filter_wiki
 import pandas as pd
+import os
 import bz2
 import gensim
 import requests
@@ -54,16 +54,11 @@ class WikiParser(object):
             file_path = os.path.join(self.language, f)
             data_for_df = [article for article in self.process_file(file_path)]
             df = pd.DataFrame(data_for_df)
-            df.to_pickle()
+            df.to_pickle(os.path.join(self.language, "{}_df.pkl".format(f)))
             print('Removing file {}'.format(file_path))
             os.remove(file_path)
 
     def unify_data_frames(self):
-        dfs = [pd.read_pickle(f) for f in os.listdir(self.language)]
+        dfs = [pd.read_pickle(os.path.join(self.language,f)) for f in os.listdir(self.language) if f.endswith('pkl')]
         full_df = pd.concat(dfs)
         full_df.to_pickle(os.path.join(self.language, "full_df.pkl"))
-
-
-parser = WikiParser('es')
-parser.create_data_frames()
-parser.unify_data_frames()
