@@ -59,6 +59,6 @@ class WikiParser(object):
             os.remove(file_path)
 
     def unify_data_frames(self):
-        dfs = [pd.read_pickle(os.path.join(self.language,f)) for f in os.listdir(self.language) if f.endswith('pkl')]
+        dfs = [pd.read_pickle(os.path.join(self.language, f)) for f in os.listdir(self.language) if f.endswith('pkl')]
         full_df = pd.concat(dfs)
         full_df.to_pickle(os.path.join(self.language, "full_df.pkl"))
