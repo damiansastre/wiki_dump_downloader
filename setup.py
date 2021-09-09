@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='wikidump',
-      version='1.0.4',
+      version='1.0.5',
       description='Imports Wikipedia Dumps By Language',
       url='https://github.com/tagercito/wiki_dump_downloader',
       author='Damian Sastre',

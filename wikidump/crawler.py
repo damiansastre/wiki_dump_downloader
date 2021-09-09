@@ -45,9 +45,11 @@ class WikiDumpCrawler(object):
         data = []
         for ul in soup.find('b', string=self.article_title).find_parent('li').find('ul').find_all('li'):
             a = ul.find('a')
+            size = float(re.findall(self.size_regex, ul.text.strip(a.text))[0]) if \
+                re.findall(self.size_regex, ul.text.strip(a.text)) else 'Not Available'
             new_link = {"url": a['href'],
                         "filename": a.text,
-                        "size": float(re.findall(self.size_regex, ul.text.strip(a.text))[0])}
+                        "size": size}
             data.append(new_link)
         return data, sum(link['size'] for link in data)
 
